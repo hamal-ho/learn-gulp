@@ -5,7 +5,7 @@ const { promisify } = require('util');
 
 const knownOptions = {
   string: ['name', 'page'],
-  default: { name: 'my-page', page: 'my-page' }
+  default: { name: 'blank', page: 'my-page' }
 };
 
 exports.options = minimist(process.argv.slice(2), knownOptions);

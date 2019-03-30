@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.js"],"names":["a","console","log"],"mappings":";;AAAA,IAAMA,CAAC,GAAG,KAAV;AACAC,OAAO,CAACC,GAAR,CAAYF,CAAZ,EAAc,KAAd","file":"main.js","sourcesContent":["const a = '123';\r\nconsole.log(a,'===')"]}

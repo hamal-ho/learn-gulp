@@ -1,6 +1,6 @@
 const { options, writeFile, mkdir } = require('./base');
 
-async function addPage(cb) {
+async function add_page(cb) {
   const path = `src/${options.name}`;
   const files = ['.js', '.scss', '.html'];
   await mkdir(path, {
@@ -17,5 +17,4 @@ async function addPage(cb) {
   await Promise.all(writes);
   cb();
 }
-
-exports.addPage = addPage;
+exports.add_page = add_page;
