@@ -1,1 +1,0 @@
-{"version":3,"sources":["test.js"],"names":["console","log"],"mappings":";;AAAAA,OAAO,CAACC,GAAR,CAAY,UAAZ","file":"test.js","sourcesContent":["console.log('testpage')"]}

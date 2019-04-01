@@ -1,1 +1,1 @@
-console.log('testpage')
+// test js
