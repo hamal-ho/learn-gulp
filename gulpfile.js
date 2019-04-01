@@ -32,5 +32,4 @@ exports.addTask = async cd => {
 };
 
 exports.add_page = gulpConfig.add_page;
-exports.update_main = gulpConfig.update_main;
-exports.build = gulpConfig.clone;
+exports.watch_page = gulpConfig.watch_page;

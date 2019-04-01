@@ -2,14 +2,20 @@ const { options, writeFile, mkdir, readFile } = require('./base');
 
 function createJS() {
   const template = `// ${options.name} js`;
-  return writeFile(`src/${options.name}/${options.name}.js`, template);
+  return writeFile(`src/${options.name}/${options.name}.js`, template).then(
+    () => {
+      console.info(`创建${options.name}.js`);
+    }
+  );
 }
 function createCSS() {
   // const template = `@import "../main/main.scss";`;
   return writeFile(
     `src/${options.name}/${options.name}.scss`,
     `// ${options.name}.scss`
-  );
+  ).then(() => {
+    console.info(`创建${options.name}.scss`);
+  });
 }
 
 async function createHTML() {
@@ -26,7 +32,9 @@ async function createHTML() {
   return writeFile(
     `src/${options.name}/${options.name}.html`,
     `<!-- ${options.name} html -->`
-  );
+  ).then(() => {
+    console.info(`创建${options.name}.html`);
+  });
 }
 
 async function add_page(cb) {
