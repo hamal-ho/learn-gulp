@@ -9,6 +9,7 @@ const sass = require('gulp-sass');
 const css = require('gulp-clean-css');
 const browsersync = require('browser-sync').create();
 const rev = require('gulp-rev-append');
+const autoprefixer = require('gulp-autoprefixer');
 
 // BrowserSync
 function BrowserSync(done) {
@@ -37,6 +38,15 @@ function transCss() {
     .pipe(css())
     .pipe(rename('index.css'))
     .pipe(rev())
+    .pipe(
+      autoprefixer({
+        browsers: ['last 2 versions'], // 浏览器版本
+        cascade: true, // 美化属性，默认true
+        add: true, // 是否添加前缀，默认true
+        remove: true, // 删除过时前缀，默认true
+        flexbox: true // 为flexbox属性添加前缀，默认true
+      })
+    )
     .pipe(dest(`www`))
     .pipe(browsersync.stream());
 }
