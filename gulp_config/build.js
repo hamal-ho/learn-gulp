@@ -1,14 +1,10 @@
-const { watch, parallel, series } = require('gulp');
-const { options, readFile } = require('./base');
+const { parallel, series } = require('gulp');
+const { readFile } = require('./base');
 const { src, dest } = require('gulp');
 const rename = require('gulp-rename');
 const { obj } = require('through2');
-const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const sass = require('gulp-sass');
-const browsersync = require('browser-sync').create();
-const rev = require('gulp-rev-append');
-const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const cleanCSS = require('gulp-clean-css');
 const htmlbeautify = require('gulp-html-beautify');
@@ -36,10 +32,10 @@ async function copyHtml(cb) {
     .pipe(
       obj(function(file, encode, cb) {
         const content = file.contents.toString(encode);
-        const p = `${main[0]}<link rel="stylesheet" href="statics/css/main.css">
-        <link rel="stylesheet" href="statics/css/${pageName}.css">
-        ${content}<script src="statics/js/main.js"></script>
-        <script src="statics/js/${pageName}.js"></script>
+        const p = `${main[0]}<link rel="stylesheet" href="assets/css/main.css">
+        <link rel="stylesheet" href="assets/css/${pageName}.css">
+        ${content}<script src="assets/js/main.js"></script>
+        <script src="assets/js/${pageName}.js"></script>
         </body>${main[1]}`;
         file.contents = Buffer.from(p);
         this.push(file);
@@ -47,7 +43,6 @@ async function copyHtml(cb) {
       })
     )
     .pipe(htmlbeautify({ indentSize: 2 }))
-
     .pipe(dest(`dist`));
   cb();
 }
@@ -61,7 +56,7 @@ function copyCss(cb) {
         path.dirname = '';
       })
     )
-    .pipe(dest(`dist/statics/css`));
+    .pipe(dest(`dist/assets/css`));
   cb();
 }
 
@@ -78,12 +73,12 @@ function copyJs(cb) {
         path.dirname = '';
       })
     )
-    .pipe(dest(`dist/statics/js`));
+    .pipe(dest(`dist/assets/js`));
   cb();
 }
 
 function copyAssets(cb) {
-  src(`src/assets/**`).pipe(dest(`dist/statics`));
+  src(`src/assets/**`).pipe(dest(`dist/assets`));
   cb();
 }
 
